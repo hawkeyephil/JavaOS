@@ -5,22 +5,22 @@ import java.util.ArrayList;
 public class Thread {
     
     //Instance variables that represent the components of a thread 
-    private ArrayList instructions; 
+    private String instructions; 
     private String state; 
-    private String priority;
+    private ArrayList stack;
 
     //Default constructor that creates an empty thread 
     public Thread() {
-        instructions = new ArrayList(); 
+        instructions = ""; 
         state = "";
-        priority = ""; 
+        stack = new ArrayList(); 
     }
 
     //Paramaterized construction that creates a thread with specified components 
-    public Thread(ArrayList instructions, String state, String priority) {
+    public Thread(String instructions, String state, ArrayList stack) {
         this.instructions = instructions; 
         this.state = state; 
-        this.priority = priority; 
+        this.stack = stack; 
     }
 
 }
