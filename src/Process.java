@@ -1,10 +1,10 @@
 //Import statements 
-import java.util.ArrayList;
+import java.util.ArrayList;  
 
 //Basic class that represents a process object 
 public class Process { 
     //Instance variables --> Components of a process 
-    private ArrayList program;
+    private ArrayList<Thread> program;
     private String state; 
     private String input; 
     private String output; 
@@ -13,7 +13,10 @@ public class Process {
 
     //Default constructor that makes an empty process 
     public Process() {
-        program = new ArrayList();
+        program = new ArrayList<Thread>(); 
+        //Creates and Adds an empty thread to the empty process 
+        Thread thread = new Thread();
+        program.add(thread);
         state = "";
         input = "";
         output = ""; 
@@ -22,7 +25,7 @@ public class Process {
     } 
 
     //Paramaterized constructor that makes a process with specific information 
-    public Process(ArrayList program, String state, String input, String output, String priority, ArrayList memory) {
+    public Process(ArrayList<Thread> program, String state, String input, String output, String priority, ArrayList memory) {
         this.program = program; 
         this.state = state;
         this.input = input; 
