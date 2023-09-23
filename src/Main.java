@@ -2,11 +2,11 @@
 //Main class 
 public class Main {
     //An empty process 
-    private static Process process; 
+    private static Scheduler scheduler; 
 
     //Main method 
     public static void main(String[] args) { 
         //Creates an empty process
-        process = new Process();
+        scheduler = new Scheduler();
     }
 }

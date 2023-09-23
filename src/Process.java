@@ -24,6 +24,21 @@ public class Process {
         memory = new ArrayList(); 
     } 
 
+    //Paramaterized constructor that makes an empty process with a specified number of threads 
+    public Process(int numberThreads) {
+        program = new ArrayList<Thread>();
+        for(int i = 0; i < numberThreads; i++) { 
+            //Creates and Adds an empty thread to the empty process
+            Thread thread = new Thread();
+            program.add(thread);
+        }  
+        state = "";
+        input = "";
+        output = ""; 
+        priority = ""; 
+        memory = new ArrayList(); 
+    }
+
     //Paramaterized constructor that makes a process with specific information 
     public Process(ArrayList<Thread> program, String state, String input, String output, String priority, ArrayList memory) {
         this.program = program; 
@@ -32,6 +47,12 @@ public class Process {
         this.output = output; 
         this.priority = priority; 
         this.memory = memory; 
+    } 
+
+    //Returns the number of threads that a process has
+    public int getNumberThread() {
+        int numberThreads = program.size();
+        return numberThreads;
     }
 
 }
