@@ -6,7 +6,7 @@ public class Main {
 
     //Main method 
     public static void main(String[] args) { 
-        //Creates a scheduler object
-        scheduler = new Scheduler(); 
+        //Creates a scheduler object that runs for 10 minutes
+        scheduler = new Scheduler(10); 
     }
 }

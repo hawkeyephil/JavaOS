@@ -33,7 +33,7 @@ public class ProcessIDManager {
     //Delete a specific processID and push it onto the stack for reuse 
     public void deleteProcessID(int deleteProcessID) {
         //Make sure the processID has actually been assigned 
-        if(deleteProcessID > 0 && deleteProcessID <= processID) {
+        if(deleteProcessID > 0) {
             processIDs.push(deleteProcessID);
         } 
         //Error message if the processID is not assigned 
