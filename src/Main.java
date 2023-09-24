@@ -1,12 +1,12 @@
 
 //Main class 
 public class Main {
-    //An empty process 
-    private static Process process; 
+    //A scheduler object 
+    private static Scheduler scheduler; 
 
     //Main method 
     public static void main(String[] args) { 
-        //Creates an empty process
-        process = new Process();
+        //Creates a scheduler object that runs for 10 minutes
+        scheduler = new Scheduler(10); 
     }
 }
