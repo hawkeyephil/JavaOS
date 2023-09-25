@@ -61,6 +61,16 @@ public class Process {
     //Returns the processID value 
     public int getProcessID() { 
         return processID;
+    } 
+
+    //Sets the priority attribute 
+    public void setPriority(String priority) {
+        this.priority = priority;
+    } 
+
+    //Returns the priority level 
+    public String getPriority() {
+        return priority;
     }
 
 }
