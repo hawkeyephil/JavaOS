@@ -18,25 +18,25 @@ public class Process {
         //Creates and Adds an empty thread to the empty process 
         ProcessThread thread = new ProcessThread();
         program.add(thread);
-        state = "";
+        state = "Ready";
         input = "";
         output = ""; 
-        priority = ""; 
+        priority = "Low"; 
         memory = new ArrayList(); 
     } 
 
     //Paramaterized constructor that makes an empty process with a specified number of threads 
-    public Process(int numberThreads, int processID) {
+    public Process(int numberThreads, int processID, String priority) {
         program = new ArrayList<ProcessThread>();
         for(int i = 0; i < numberThreads; i++) { 
             //Creates and Adds an empty thread to the empty process
             ProcessThread thread = new ProcessThread();
             program.add(thread);
         }  
-        state = "";
+        state = "Ready";
         input = "";
         output = ""; 
-        priority = ""; 
+        this.priority = priority; 
         memory = new ArrayList(); 
         this.processID = processID;
     }
@@ -71,6 +71,11 @@ public class Process {
     //Returns the priority level 
     public String getPriority() {
         return priority;
+    } 
+
+    //Sets the state attribute
+    public void setState(String state) {
+        this.state = state; 
     }
 
 }

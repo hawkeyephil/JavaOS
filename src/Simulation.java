@@ -21,24 +21,24 @@ public class Simulation {
     //Runs the simulation
     public void runSimulation(double runtime) { 
         while(System.currentTimeMillis() < end) { 
-            //Random value that determines if a process will be created or terminated
-            int prng = rng.nextInt(8); 
-            //Create 5 to 10 processes
-            if(prng == 0) {
-                scheduler.createRandomProcesses();
-            } 
-            //Terminate a random process
-            else {
-                scheduler.terminateRamdonProcesses();
+            //Random value to determine if an event will happen (slow down console)
+            int prng = rng.nextInt(10);
+            if(prng == 0) { 
+                //Random value that determines if a process will be created or terminated
+                prng = rng.nextInt(8); 
+                //Create 5 to 10 processes
+                if(prng == 0) {
+                    scheduler.createRandomProcesses();
+                } 
+                //Terminate a random process
+                else {
+                    scheduler.terminateRamdonProcesses();
+                }
             } 
 
-            //Pause the while loop for 0 to 3 seconds to make it easier to read the console 
-            try {
-                Thread.sleep(rng.nextInt(4)*1000); 
-            } 
-            catch(InterruptedException e) { 
-                e.printStackTrace();
-            }
+            //Rotate processes in CPU using round robin scheduling with a specified quantum
+            scheduler.roundRobin(0.1);
+
         } 
     }
 

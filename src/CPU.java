@@ -11,7 +11,7 @@ public class CPU {
 
     //Sets or moves a process with a specified ID into the CPU
     public void setProcessID(int processID) {
-        this.processID = processID;
+        this.processID = processID; 
     } 
 
     //Returns the Process ID of the current process running in the CPU

@@ -32,22 +32,23 @@ public class Scheduler {
             //Generate a random number of threads to be created between 3 and 40
             int randomNumberThreads = rng.nextInt(38) + 3; 
             //Generate a processID for the process
-            int processID = processIDManager.generateProcessID(); 
-            //Create a new process
-            Process process = new Process(randomNumberThreads, processID); 
+            int processID = processIDManager.generateProcessID();  
             //Set a random priority level
             int randomPriority = rng.nextInt(3); 
+            String priority;
             switch(randomPriority) {
                 case 0: 
-                    process.setPriority("Low");
+                    priority = "Low";
                     break;
                 case 1: 
-                    process.setPriority("Medium");
+                    priority = "Medium";
                     break;
-                case 2: 
-                    process.setPriority("High"); 
+                default: 
+                    priority = "High"; 
                     break;                
             } 
+            //Create a new process
+            Process process = new Process(randomNumberThreads, processID, priority);
             //Add the process to the scheduler
             processes.add(process); 
             System.out.println("Process Created Successfully. Process ID: " + process.getProcessID() + " --> " + process.getNumberThread() + " Threads");
@@ -73,8 +74,37 @@ public class Scheduler {
     } 
 
     //Implements the round robin scheduling algorithm 
-    public void roundRobin() {
-        //Rotate different processes in and out of the CPU
-    }
+    //The ArrayList is treated like a queue 
+    public void roundRobin(double quantum) { 
+        //Check if there are any processes to run  
+        if(processes.size() != 0) { 
+            //Rotate different processes in and out of the CPU 
+            //Remove the first element from the ArrayList
+            Process cpuProcess = processes.get(0); 
+            processes.remove(0);
+            //Push that element "onto" the CPU 
+            //Change the process ID in the CPU 
+            cpu.setProcessID(cpuProcess.getProcessID());
+            //Change the state of the process to Running 
+            cpuProcess.setState("Running"); 
+            //Print the process ID of the running process
+            System.out.println("Process ID: " + cpu.getProcessID() + " Running");
+            //Wait 
+            double endTime = System.currentTimeMillis() + quantum*1000; 
+            while(System.currentTimeMillis() < endTime) {
+                //Wait the quantum length of time
+            }
+            //Remove the process from the CPU 
+            cpu.setProcessID(0);
+            //Change the state of the process to Ready 
+            cpuProcess.setState("Ready");
+            //Add the element back to the end of the ArrayList (Queue)
+            processes.add(cpuProcess);
+        } 
+        else { 
+            //If there are no processes ready return a message
+            System.out.println("There are no Processes to Run.");
+        }
+    } 
 
 }
