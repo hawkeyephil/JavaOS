@@ -1,12 +1,13 @@
 
 //Main class 
 public class Main {
-    //A scheduler object 
-    private static Scheduler scheduler; 
+    //A simulation object 
+    private static Simulation simulation;
 
     //Main method 
     public static void main(String[] args) { 
-        //Creates a scheduler object that runs for 10 minutes
-        scheduler = new Scheduler(10); 
-    }
+        //Creates a simulation object that runs for 10 minutes 
+        simulation = new Simulation(10);
+    } 
+
 }
